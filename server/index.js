@@ -1,0 +1,26 @@
+const express = require("express");
+const cors = require("cors");
+const dotenv = require("dotenv");
+const connectDB = require("./database");
+const Cars = require("./routes/carsRoute.js");
+const Login = require("./routes/auth.js");
+const Register = require("./routes/register.js");
+
+dotenv.config();
+
+const app = express();
+
+app.use(express.json());
+app.use(cors);
+
+connectDB();
+
+app.use("api/v1/cars", Cars);
+app.use("api/v1/login", Login);
+app.use("api/v1/register", Register);
+
+const port = process.env.PORT || 8000;
+
+app.listen(port, () => {
+  console.log(`Server is running: ${port}`);
+});
