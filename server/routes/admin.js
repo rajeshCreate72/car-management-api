@@ -1,5 +1,5 @@
 const express = require("express");
-const users = require("../models/users");
+const admin = require("../models/admin");
 const bcrypt = require("bcryptjs");
 
 const router = express.Router();
@@ -8,7 +8,7 @@ router.post("/", async (req, res) => {
   const { email, password } = req.body;
 
   try {
-    const checkEmail = await users.findOne({ email: email });
+    const checkEmail = await admin.findOne({ email: email });
 
     if (checkEmail) {
       res.status(400).json("Email already Exists");
@@ -18,7 +18,7 @@ router.post("/", async (req, res) => {
         email: email,
         password: hashPasswd,
       };
-      await users.create(data);
+      await admin.create(data);
       res.status(200).json("Registration Successful");
     }
   } catch (error) {

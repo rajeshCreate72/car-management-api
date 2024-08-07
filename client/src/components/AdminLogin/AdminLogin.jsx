@@ -17,8 +17,14 @@ function AdminLogin() {
   const handleAdminLogin = async (e) => {
     e.preventDefalult();
     try {
-      const resposne = await axios.post("localhost:8000/api/v1/admin_login");
-    } catch (error) {}
+      const resposne = await axios.post("/api/v1/admin_login", {
+        email,
+        password,
+      });
+      navigate("/admin/homepage");
+    } catch (error) {
+      console.log(error.message);
+    }
   };
 
   return (

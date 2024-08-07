@@ -5,6 +5,7 @@ const connectDB = require("./database");
 const Cars = require("./routes/carsRoute.js");
 const Login = require("./routes/auth.js");
 const Register = require("./routes/register.js");
+const Admin = require("./routes/admin.js");
 
 dotenv.config();
 
@@ -18,6 +19,7 @@ connectDB();
 app.use("api/v1/cars", Cars);
 app.use("api/v1/login", Login);
 app.use("api/v1/register", Register);
+app.use("api/v1/admin_login", Admin);
 
 const port = process.env.PORT || 8000;
 
