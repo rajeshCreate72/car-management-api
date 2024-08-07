@@ -4,13 +4,37 @@ import AdminPage from "../AdminPage/AdminPage";
 import HomePage from "../HomePage/HomePage";
 import UserLogin from "../UserLogin/UserLogin";
 import UserRegister from "../UserRegister/UserRegister";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  useNavigate,
+} from "react-router-dom";
+
+function NavigationButtons() {
+  const navigate = useNavigate();
+
+  function handleAdmin() {
+    navigate("/admin/login");
+  }
+  function handleUser() {
+    navigate("/user/login");
+  }
+
+  return (
+    <div>
+      <button onClick={handleAdmin}>Admin Login</button>
+      <button onClick={handleUser}>User Login</button>
+    </div>
+  );
+}
 
 function MainComponent() {
   return (
     <Router>
       <div>
         <h1 className="text-6xl">Assignment for Quadiro Technologies</h1>
+        <NavigationButtons />
         <Routes>
           <Route path="/user/:userId" element={<HomePage />}></Route>
           <Route path="/user/login" element={<UserLogin />}></Route>
