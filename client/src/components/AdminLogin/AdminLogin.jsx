@@ -19,7 +19,7 @@ function AdminLogin() {
     e.preventDefault();
     try {
       const resposne = await axios.post(
-        "http://localhost:8000/api/v1/admin_login",
+        "https://quadiro-assignment-651o.vercel.app/api/v1/admin_login",
         {
           email,
           password,
@@ -34,7 +34,10 @@ function AdminLogin() {
   return (
     <div className="flex flex-col justify-evenly items-center bg-blue-400 m-6">
       <h1 className="text-4xl">Admin Login</h1>
-      <form className="flex flex-col justify-evenly items-center m-6">
+      <form
+        onSubmit={handleAdminLogin}
+        className="flex flex-col justify-evenly items-center m-6"
+      >
         <label className="m-6">
           Email:
           <input
@@ -56,9 +59,6 @@ function AdminLogin() {
         <button
           className="bg-blue-200 text-black font-bold py-2 px-4 rounded"
           type="submit"
-          onClick={() => {
-            handleAdminLogin();
-          }}
         >
           Login
         </button>

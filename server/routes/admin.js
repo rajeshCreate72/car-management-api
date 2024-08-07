@@ -8,22 +8,21 @@ router.post("/", async (req, res) => {
   const { email, password } = req.body;
 
   try {
-    const checkEmail = await admin.findOne({ email: email });
+    const checkUser = await admin.findOne({ email: email });
 
-    if (checkEmail) {
-      res.status(400).json("Email already Exists");
+    if (!checkUser) {
+      return res.status(404).json("User not found");
+    }
+    const checkPasswd = await bcrypt.compare(password, checkUser.password);
+
+    if (checkPasswd) {
+      res.status(200).json(checkUser.userId);
     } else {
-      const hashPasswd = await bcrypt.hash(password, 10);
-      const data = {
-        email: email,
-        password: hashPasswd,
-      };
-      await admin.create(data);
-      res.status(200).json("Registration Successful");
+      res.status(401).json("Invalid password or email");
     }
   } catch (error) {
-    console.error("Error Registering: ", error.message);
-    res.status(500).json(error);
+    console.error("Error Logging in: ", error);
+    res.status(500).json("Error logging in");
   }
 });
 
