@@ -11,23 +11,24 @@ dotenv.config();
 
 const app = express();
 
-app.use(
-  cors({
-    origin: ["https://quadiro-assignment-two.vercel.app/"],
-    methods: ["POST", "GET"],
-    credentials: true,
-  })
-);
+// app.use(
+//   cors({
+//     origin: ["https://quadiro-assignment-two.vercel.app/"],
+//     methods: ["POST", "GET"],
+//     credentials: true,
+//   })
+// );
+
+app.use(cors());
 
 app.use(express.json());
-app.use(cors);
 
 connectDB();
 
-app.use("api/v1/cars", Cars);
-app.use("api/v1/login", Login);
-app.use("api/v1/register", Register);
-app.use("api/v1/admin_login", Admin);
+app.use("/api/v1/cars", Cars);
+app.use("/api/v1/login", Login);
+app.use("/api/v1/register", Register);
+app.use("/api/v1/admin_login", Admin);
 
 const port = process.env.PORT || 8000;
 

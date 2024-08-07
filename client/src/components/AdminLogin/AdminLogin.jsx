@@ -16,12 +16,15 @@ function AdminLogin() {
   };
 
   const handleAdminLogin = async (e) => {
-    e.preventDefalult();
+    e.preventDefault();
     try {
-      const resposne = await axios.post("/api/v1/admin_login", {
-        email,
-        password,
-      });
+      const resposne = await axios.post(
+        "http://localhost:8000/api/v1/admin_login",
+        {
+          email,
+          password,
+        }
+      );
       navigate("/admin/homepage");
     } catch (error) {
       console.log(error.message);
@@ -53,6 +56,9 @@ function AdminLogin() {
         <button
           className="bg-blue-200 text-black font-bold py-2 px-4 rounded"
           type="submit"
+          onClick={() => {
+            handleAdminLogin();
+          }}
         >
           Login
         </button>

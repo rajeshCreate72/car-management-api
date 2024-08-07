@@ -43,7 +43,7 @@ function MainComponent() {
   return (
     <Router>
       <div>
-        <h1 className="text-6xl">Assignment for Quadiro Technologies</h1>
+        <h1 className="text-6xl">Assignment from Quadiro Technologies</h1>
         <NavigationButtons />
         <Routes>
           <Route path="/user/:userId" element={<HomePage />}></Route>
