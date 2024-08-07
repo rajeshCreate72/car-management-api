@@ -11,6 +11,14 @@ dotenv.config();
 
 const app = express();
 
+app.use(
+  cors({
+    origin: ["https://quadiro-assignment-two.vercel.app/"],
+    methods: ["POST", "GET"],
+    credentials: true,
+  })
+);
+
 app.use(express.json());
 app.use(cors);
 
