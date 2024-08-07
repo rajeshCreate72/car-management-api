@@ -23,8 +23,18 @@ function NavigationButtons() {
 
   return (
     <div>
-      <button onClick={handleAdmin}>Admin Login</button>
-      <button onClick={handleUser}>User Login</button>
+      <button
+        className="bg-blue-200 text-black font-bold py-2 px-4 rounded m-6"
+        onClick={handleAdmin}
+      >
+        Admin Login
+      </button>
+      <button
+        className="bg-blue-200 text-black font-bold py-2 px-4 rounded m-6"
+        onClick={handleUser}
+      >
+        User Login
+      </button>
     </div>
   );
 }
