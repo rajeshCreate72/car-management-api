@@ -23,6 +23,9 @@ function AdminLogin() {
         {
           email,
           password,
+        },
+        {
+          withCredentials: true,
         }
       );
       navigate("/admin/homepage");

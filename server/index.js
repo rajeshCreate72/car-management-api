@@ -16,11 +16,14 @@ app.use(
   cors({
     origin: ["https://quadiro-assignment-two.vercel.app"],
     methods: ["POST", "GET"],
+    allowedHeaders: ["Content-type", "Authorization"],
     credentials: true,
   })
 );
 
 // app.use(cors());
+
+app.options("*", cors()); // Pre-flight requests for all routes
 
 app.get("/", (req, res) => {
   res.send(`
