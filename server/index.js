@@ -13,11 +13,13 @@ const app = express();
 
 app.use(
   cors({
-    origin: ["https://quadiro-assignment-two.vercel.app/"],
+    origin: ["https://quadiro-assignment-two.vercel.app"],
     methods: ["POST", "GET"],
     credentials: true,
   })
 );
+
+// app.use(cors());
 
 app.use(express.json());
 
