@@ -10,6 +10,7 @@ const Admin = require("./routes/admin.js");
 dotenv.config();
 
 const app = express();
+app.use(express.json());
 
 app.use(
   cors({
@@ -20,8 +21,6 @@ app.use(
 );
 
 // app.use(cors());
-
-app.use(express.json());
 
 connectDB();
 
