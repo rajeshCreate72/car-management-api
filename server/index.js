@@ -22,6 +22,16 @@ app.use(
 
 // app.use(cors());
 
+app.get("/", (req, res) => {
+  res.send(`
+    <!DOCTYPE html>
+      <html>
+        <title>Server</title>
+        <h1>Hello!!!</h1>
+      </html>
+    `);
+});
+
 connectDB();
 
 app.use("/api/v1/cars", Cars);
